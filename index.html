@@ -142,7 +142,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <h3 class="accessory__title">Fechadura</h3>
                         <span class="accessory__category">Smart Lock</span>
                         <span class="accessory__preci">$795</span>
-                        <a href="#" class="button accessory__button"><i
+                        <a href="#" class="button accessory__button" id="heart1"><i
                                 class='bx bx-heart'></i></a>
                     </div>
 
@@ -287,6 +287,16 @@ window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
 'event': 'click_btnluz',
 'btn_luz': 'botton luz'
+});
+});
+</script>
+        
+<script>
+document.getElementById("heart1").addEventListener("click", function () {
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+'event': 'click_heart',
+'item_name': 'Fechadura'
 });
 });
 </script>
