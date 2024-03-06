@@ -359,24 +359,13 @@ window.dataLayer.push({
                             
   <script>
   function getClickedTitle(title) {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-          'event': 'explore_clicado',
-          'titulo': '(`${title}`)'
-      });
-  }
-
-  const btExplore = document.querySelectorAll('.button-link');
-
-  btExplore.forEach((button, index) => {
-      button.addEventListener('click', () => {
-          const titles = document.querySelectorAll('.decoration__title');
-          const clickedTitle = titles[index].innerText;
-          getClickedTitle(clickedTitle);
-      });
-  });
-</script>
-  
-        
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'event': 'explore_clicado',
+        'titulo': title
+    });
+}
+  </script>
+       
     </body>
 </html>
