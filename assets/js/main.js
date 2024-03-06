@@ -1,3 +1,7 @@
+const titles = document.querySelectorAll('.decoration__title');
+          const clickedTitle = titles[index].innerText;
+           getClickedTitle(clickedTitle);
+
 /*==================== SHOW MENU ====================*/
 const showMenu = (toggleId, navId) =>{
     const toggle = document.getElementById(toggleId),
