@@ -357,15 +357,25 @@ window.dataLayer.push({
 });
 </script>
                             
-  <script>
+ <script>
   function getClickedTitle(title) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        'event': 'explore_clicado',
-        'titulo': title
-    });
-}
-  </script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+          'event': 'explore_clicado',
+          'titulo': title // Remova as aspas e crase desnecessárias
+      });
+  }
+
+  const btExplore = document.querySelectorAll('.button-link');
+
+  btExplore.forEach((button, index) => {
+      button.addEventListener('click', () => {
+          const titles = document.querySelectorAll('.decoration__title');
+          const clickedTitle = titles[index].innerText;
+          getClickedTitle(clickedTitle);
+      });
+  });
+</script>
        
     </body>
 </html>
