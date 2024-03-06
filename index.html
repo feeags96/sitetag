@@ -357,20 +357,24 @@ window.dataLayer.push({
 });
 </script>
                             
-<script>
-const btExplore = document.querySelectorAll('.button-link');
-// Adicionar um evento de clique a cada botão
-btExplore.forEach((button, index) => {
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-'event': 'click_btExplore',
-'explore_name': (`${btExplore}`);
-    button.addEventListener('click', () => {
-        // Encontrar o título correspondente com base no índice
-        const titles = document.querySelectorAll('.decoration__title');
-        const clickedTitle = titles[index].innerText;        
-});
-});
+  <script>
+  function getClickedTitle(title) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+          'event': 'explore_clicado',
+          'titulo': title
+      });
+  }
+
+  const btExplore = document.querySelectorAll('.button-link');
+
+  btExplore.forEach((button, index) => {
+      button.addEventListener('click', () => {
+          const titles = document.querySelectorAll('.decoration__title');
+          const clickedTitle = titles[index].innerText;
+          getClickedTitle(clickedTitle);
+      });
+  });
 </script>
   
         
