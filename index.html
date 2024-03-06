@@ -358,11 +358,17 @@ window.dataLayer.push({
 </script>
                             
 <script>
-document.getElementById("decoration").addEventListener("click", function () {
+const btExplore = document.querySelectorAll('.button-link');
+// Adicionar um evento de clique a cada botão
+btExplore.forEach((button, index) => {
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
-'event': 'click_explorer0',
-'item_name': 'Conexão Inteligente'
+'event': 'click_btExplore',
+'item_name': (`${btExplore}`);
+    button.addEventListener('click', () => {
+        // Encontrar o título correspondente com base no índice
+        const titles = document.querySelectorAll('.decoration__title');
+        const clickedTitle = titles[index].innerText;        
 });
 });
 </script>
