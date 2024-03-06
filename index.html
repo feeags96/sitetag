@@ -362,10 +362,12 @@ window.dataLayer.push({
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
           'event': 'explore_clicado',
-          'titulo': title // Remova as aspas e crase desnecessárias
+          'titulo': title
       });
   }
+ </script>
 
+<script>
   const btExplore = document.querySelectorAll('.button-link');
 
   btExplore.forEach((button, index) => {
