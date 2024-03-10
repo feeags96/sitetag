@@ -356,6 +356,25 @@ window.dataLayer.push({
 });
 });
 </script>
+
+<script>
+var buttons = document.querySelectorAll(".button.button-link");
+buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        // Encontra o título correspondente ao botão clicado
+        var title = this.parentNode.querySelector(".decoration__title");
+        if (title) {
+            var titleText = title.innerText;
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'exploreButtonClicked', 
+                'exploreTitleText': titleText 
+            });
+        }
+    });
+});
+</script>
+
         
     </body>
 </html>
