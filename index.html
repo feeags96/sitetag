@@ -292,70 +292,26 @@ window.dataLayer.push({
 </script>
         
 <script>
-document.getElementById("heart1").addEventListener("click", function () {
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-'event': 'click_heart',
-'item_name': 'Fechadura',
-'item_value':'R$ 795.00'   
-});
-});
-</script>
-
-<script>
-document.getElementById("heart2").addEventListener("click", function () {
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-'event': 'click_heart2',
-'item_name': 'Aspirador',
-'item_value':'R$ 710.00'   
-});
-});
-</script>
-
-<script>
-document.getElementById("heart3").addEventListener("click", function () {
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-'event': 'click_heart3',
-'item_name': 'Echo',
-'item_value':'R$ 1.188'   
-});
+var buttons = document.querySelectorAll(".accessory__button");
+buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        // Encontra o contêiner pai deste botão
+        var parentContainer = this.closest(".accessory__content");
+        if (parentContainer) {
+            var category = parentContainer.querySelector(".accessory__category").innerText;
+            var price = parentContainer.querySelector(".accessory__preci").innerText;
+            // Envie esses valores para o GTM
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'accessoryButtonClicked',
+                'category': category,
+                'price': price
+            });
+        }
+    });
 });
 </script>
 
-<script>
-document.getElementById("heart4").addEventListener("click", function () {
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-'event': 'click_heart4',
-'item_name': 'Echo Show',
-'item_value':'R$ 2.769.00'   
-});
-});
-</script>
-
-<script>
-document.getElementById("heart5").addEventListener("click", function () {
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-'event': 'click_heart5',
-'item_name': 'Lâmpada',
-'item_value':'R$ 71.00'   
-});
-});
-</script>
-
-<script>
-document.getElementById("heart6").addEventListener("click", function () {
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-'event': 'click_heart5',
-'item_name': 'Geladeira',
-'item_value':'R$ 24.699'   
-});
-});
-</script>
 
 <script>
 var buttons = document.querySelectorAll(".button.button-link");
