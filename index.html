@@ -300,12 +300,14 @@ buttons.forEach(function(button) {
         if (parentContainer) {
             var category = parentContainer.querySelector(".accessory__category").innerText;
             var price = parentContainer.querySelector(".accessory__preci").innerText;
+            var item_name = parentContainer.querySelector(".accessory__title").innerText;
             // Envie esses valores para o GTM
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'accessoryButtonClicked',
                 'category': category,
-                'price': price
+                'price': price,
+                'item_name': item_name
             });
         }
     });
