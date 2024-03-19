@@ -295,13 +295,11 @@ window.dataLayer.push({
 var buttons = document.querySelectorAll(".accessory__button");
 buttons.forEach(function(button) {
     button.addEventListener("click", function() {
-        // Encontra o contêiner pai deste botão
         var parentContainer = this.closest(".accessory__content");
         if (parentContainer) {
             var category = parentContainer.querySelector(".accessory__category").innerText;
             var price = parentContainer.querySelector(".accessory__preci").innerText;
             var item_name = parentContainer.querySelector(".accessory__title").innerText;
-            // Envie esses valores para o GTM
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'accessoryButtonClicked',
@@ -319,7 +317,6 @@ buttons.forEach(function(button) {
 var buttons = document.querySelectorAll(".button.button-link");
 buttons.forEach(function(button) {
     button.addEventListener("click", function() {
-        // Encontra o título correspondente ao botão clicado
         var title = this.parentNode.querySelector(".decoration__title");
         if (title) {
             var titleText = title.innerText;
