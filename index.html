@@ -216,7 +216,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <div class="send__direction">
                                 <input type="text" placeholder=" Ofertas"
                                     class="send__input">
-                                <a href="#" class="button"> Buscar </a>
+                                <a href="#" id="btnBuscar"class="button"> Buscar </a>
                             </div>
                         </form>
                     </div>
@@ -339,6 +339,17 @@ window.dataLayer.push({
 });
 });
 </script>
+
+<script>
+document.getElementById("btnBuscar").addEventListener("click", function () {
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+'event': 'btn_buscar',
+'btn_solucao': 'btn_buscar_Offer'
+});
+});
+</script>
+
         
       
     </body>
