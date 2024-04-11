@@ -212,7 +212,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             Sua Residência</h2>
                         <p class="send__description"> Faça da Sua Casa um Espaço
                             Inteligente e Conectado</p>
-                        <form action>
+                        <form id="formPesquisa">
                             <div class="send__direction">
                                 <input type="text" id="caixaDeBusca" placeholder=" Ofertas"
                                     class="send__input">
@@ -330,15 +330,20 @@ buttons.forEach(function(button) {
 });
 </script>
 
-<script>
-    function pesquisar() {
-        var textPesquisa = document.getElementById('caixaDeBusca').value;
+
+        <script>
+   
+    document.getElementById('formPesquisa').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var termoPesquisa = document.getElementById('caixaDeBusca').value;
+
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'pesquisa_realizada',
-            'termoPesquisa': textPesquisa
+            'termoPesquisa': termoPesquisa
         });
-    }
+    });
 </script>
 
         
