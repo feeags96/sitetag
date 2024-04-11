@@ -214,7 +214,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             Inteligente e Conectado</p>
                         <form action>
                             <div class="send__direction">
-                                <input type="text" placeholder=" Ofertas"
+                                <input type="text" id="caixaDeBusca" placeholder=" Ofertas"
                                     class="send__input">
                                 <a href="#" class="button"> Buscar </a>
                             </div>
@@ -328,6 +328,17 @@ buttons.forEach(function(button) {
         }
     });
 });
+</script>
+
+<script>
+    function pesquisar() {
+        var textPesquisa = document.getElementById('caixaDeBusca').value;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'pesquisa_realizada',
+            'termoPesquisa': textPesquisa
+        });
+    }
 </script>
 
         
