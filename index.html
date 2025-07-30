@@ -352,35 +352,38 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Redes Sociais
-  document.querySelector(".footer__social:nth-child(1)")?.addEventListener("click", function() {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'clique',
-      custom_section: 'footer',
-      custom_type: 'icone',
-      custom_title: 'facebook'
-    });
+document.querySelector(".footer__content:last-child a[href='#']:first-child")?.addEventListener("click", function(e) {
+  e.preventDefault();
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'clique',
+    custom_section: 'footer',
+    custom_type: 'rede-social',
+    custom_title: 'facebook'
   });
+});
 
-  document.querySelector(".footer__social:nth-child(2)")?.addEventListener("click", function() {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'clique',
-      custom_section: 'footer',
-      custom_type: 'icone',
-      custom_title: 'twitter'
-    });
+document.querySelector(".footer__content:last-child a[href='#']:nth-child(2)")?.addEventListener("click", function(e) {
+  e.preventDefault();
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'clique',
+    custom_section: 'footer',
+    custom_type: 'rede-social',
+    custom_title: 'twitter'
   });
+});
 
-  document.querySelector(".footer__social:nth-child(3)")?.addEventListener("click", function() {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'clique',
-      custom_section: 'footer',
-      custom_type: 'icone',
-      custom_title: 'instagram'
-    });
+document.querySelector(".footer__content:last-child a[href='#']:last-child")?.addEventListener("click", function(e) {
+  e.preventDefault();
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'clique',
+    custom_section: 'footer',
+    custom_type: 'rede-social',
+    custom_title: 'instagram'
   });
+});
 
   // Links de navegação no header
   document.querySelectorAll(".nav__link").forEach(function(link) {
