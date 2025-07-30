@@ -282,11 +282,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <script src="assets/js/main.js"></script>
 
 <script>
+function sanitizeText(text) {
+  return text
+    .toLowerCase()                            
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") 
+    .replace(/[^a-z0-9\s]/g, "")              
+    .trim()
+    .replace(/\s+/g, "-");                    
+}
+</script>
+
+<script>
 document.getElementById("theme-button").addEventListener("click", function () {
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
-'event': 'click_btnluz',
-'btn_luz': 'button luz'
+'event': 'clique',
+'custom_section': 'home'
+'custom_type': 'icone'
+'custom_title': 'dark-light'
 });
 });
 </script>
@@ -302,10 +315,10 @@ buttons.forEach(function(button) {
             var item_name = parentContainer.querySelector(".accessory__title").innerText;
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'accessoryButtonClicked',
-                'category': category,
-                'price': price,
-                'item_name': item_name
+                'event': 'purchase',
+                'item_category': sanitizeText(category),
+                'price': sanitizeText(price),
+                'item_name': sanitizeText(item_name)
             });
         }
     });
@@ -322,8 +335,10 @@ buttons.forEach(function(button) {
             var titleText = title.innerText;
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'exploreButtonClicked', 
-                'exploreTitleText': titleText 
+                'event': 'clique',
+                'custom_section': 'home'
+                'custom_type': 'botao'
+                'custom_title': sanitizeText(titleText) 
             });
         }
     });
@@ -334,8 +349,10 @@ buttons.forEach(function(button) {
 document.getElementById("btnSolucoes").addEventListener("click", function () {
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
-'event': 'btn_solucoes',
-'btn_solucao': 'descubra_as_solucoes'
+'event': 'clique',
+'custom_section': 'home'
+'custom_type': 'botao'
+'custom_title': 'descubra-as-solucoes'
 });
 });
 </script>
@@ -344,8 +361,10 @@ window.dataLayer.push({
 document.getElementById("btnBuscar").addEventListener("click", function () {
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
-'event': 'btn_buscar',
-'btn_buscar': 'btn_buscar_Offer'
+'event': 'clique',
+'custom_section': 'home'
+'custom_type': 'icone'
+'custom_title': 'buscar-oferta'
 });
 });
 </script>
