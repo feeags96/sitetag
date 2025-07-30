@@ -284,92 +284,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 function sanitizeText(text) {
   return text
-    .toLowerCase()                            
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") 
-    .replace(/[^a-z0-9\s]/g, "")              
+    .toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s]/g, "")
     .trim()
-    .replace(/\s+/g, "-");                    
+    .replace(/\s+/g, "-");
 }
-</script>
 
-<script>
-document.getElementById("theme-button").addEventListener("click", function () {
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-'event': 'clique',
-'custom_section': 'home',
-'custom_type': 'icone',
-'custom_title': 'dark-light'
-});
-});
-</script>
-        
-<script>
-var buttons = document.querySelectorAll(".accessory__button");
-buttons.forEach(function(button) {
-    button.addEventListener("click", function() {
-        var parentContainer = this.closest(".accessory__content");
-        if (parentContainer) {
-            var category = parentContainer.querySelector(".accessory__category").innerText;
-            var price = parentContainer.querySelector(".accessory__preci").innerText;
-            var item_name = parentContainer.querySelector(".accessory__title").innerText;
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'purchase',
-                'item_category': sanitizeText(category),
-                'price': sanitizeText(price),
-                'item_name': sanitizeText(item_name)
-            });
-        }
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.getElementById("theme-button")?.addEventListener("click", function () {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'clique',
+      custom_section: 'home',
+      custom_type: 'icone',
+      custom_title: 'dark-light'
     });
-});
-</script>
+  });
 
-
-<script>
-var buttons = document.querySelectorAll(".button.button-link");
-buttons.forEach(function(button) {
-    button.addEventListener("click", function() {
-        var title = this.parentNode.querySelector(".decoration__title");
-        if (title) {
-            var titleText = title.innerText;
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'clique',
-                'custom_section': 'home',
-                'custom_type': 'botao',
-                'custom_title': sanitizeText(titleText) 
-            });
-        }
+  document.getElementById("btnSolucoes")?.addEventListener("click", function () {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'clique',
+      custom_section: 'home',
+      custom_type: 'botao',
+      custom_title: 'descubra-as-solucoes'
     });
+  });
+
+  document.getElementById("btnBuscar")?.addEventListener("click", function () {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'clique',
+      custom_section: 'home',
+      custom_type: 'icone',
+      custom_title: 'buscar-oferta'
+    });
+  });
+
+  var accessoryButtons = document.querySelectorAll(".accessory__button");
+  accessoryButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      var parentContainer = this.closest(".accessory__content");
+      if (parentContainer) {
+        var category = parentContainer.querySelector(".accessory__category")?.innerText || "";
+        var price = parentContainer.querySelector(".accessory__preci")?.innerText || "";
+        var item_name = parentContainer.querySelector(".accessory__title")?.innerText || "";
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'purchase',
+          item_category: sanitizeText(category),
+          price: sanitizeText(price),
+          item_name: sanitizeText(item_name)
+        });
+      }
+    });
+  });
+
+  var exploreButtons = document.querySelectorAll(".button.button-link");
+  exploreButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      var title = this.parentNode.querySelector(".decoration__title");
+      if (title) {
+        var titleText = title.innerText;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'clique',
+          custom_section: 'home',
+          custom_type: 'botao',
+          custom_title: sanitizeText(titleText)
+        });
+      }
+    });
+  });
+
 });
 </script>
-
-<script>
-document.getElementById("btnSolucoes").addEventListener("click", function () {
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-'event': 'clique',
-'custom_section': 'home',
-'custom_type': 'botao',
-'custom_title': 'descubra-as-solucoes'
-});
-});
-</script>
-
-<script>
-document.getElementById("btnBuscar").addEventListener("click", function () {
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-'event': 'clique',
-'custom_section': 'home',
-'custom_type': 'icone',
-'custom_title': 'buscar-oferta'
-});
-});
-</script>
-
-        
-      
-    </body>
-</html>
