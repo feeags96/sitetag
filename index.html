@@ -296,18 +296,17 @@ function sanitizePrice(price) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Eventos de clique
   document.getElementById("theme-button")?.addEventListener("click", function () {
-    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'clique',
-      custom_section: 'home',
+      custom_section: 'header',
       custom_type: 'icone',
       custom_title: 'dark-light'
     });
   });
 
   document.getElementById("btnSolucoes")?.addEventListener("click", function () {
-    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'clique',
       custom_section: 'home',
@@ -317,7 +316,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.getElementById("btnBuscar")?.addEventListener("click", function () {
-    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'clique',
       custom_section: 'home',
@@ -326,9 +324,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Links do footer
   document.querySelectorAll(".footer__content:nth-child(2) .footer__link").forEach(function(link) {
     link.addEventListener("click", function() {
-      window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'clique',
         custom_section: 'footer',
@@ -340,7 +338,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll(".footer__content:nth-child(3) .footer__link").forEach(function(link) {
     link.addEventListener("click", function() {
-      window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'clique',
         custom_section: 'footer',
@@ -361,21 +358,20 @@ document.addEventListener("DOMContentLoaded", function () {
       else if (this.querySelector('.bxl-instagram-alt')) socialNetwork = 'instagram';
       
       if (socialNetwork) {
-        window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'clique',
-          custom_section: 'home',
-          custom_type:'link',
-          custom_title: socialNetwork
+          custom_section: 'footer',
+          custom_type: 'rede-social',
+          custom_title: sanitizeText(socialNetwork)
         });
       }
     });
   });
 
+  // Navegação
   document.querySelectorAll(".nav__link").forEach(function(link) {
     link.addEventListener("click", function() {
       if(this.getAttribute('href') !== '#') {
-        window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'clique',
           custom_section: 'header',
@@ -386,8 +382,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Botão Explore
   document.querySelector(".share__data .button")?.addEventListener("click", function() {
-    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'clique',
       custom_section: 'home',
@@ -396,15 +392,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  var accessoryButtons = document.querySelectorAll(".accessory__button");
-  accessoryButtons.forEach(function(button) {
+  // Produtos
+  document.querySelectorAll(".accessory__button").forEach(function(button) {
     button.addEventListener("click", function() {
       var parentContainer = this.closest(".accessory__content");
       if (parentContainer) {
         var category = parentContainer.querySelector(".accessory__category")?.innerText || "";
         var price = parentContainer.querySelector(".accessory__preci")?.innerText || "";
         var item_name = parentContainer.querySelector(".accessory__title")?.innerText || "";
-        window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'purchase',
           item_category: sanitizeText(category),
@@ -415,25 +410,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  var exploreButtons = document.querySelectorAll(".button.button-link");
-  exploreButtons.forEach(function(button) {
+  // Botões Explore
+  document.querySelectorAll(".button.button-link").forEach(function(button) {
     button.addEventListener("click", function() {
       var title = this.parentNode.querySelector(".decoration__title");
       if (title) {
-        var titleText = title.innerText;
-        window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'clique',
           custom_section: 'home',
           custom_type: 'botao',
-          custom_title: sanitizeText(titleText)
+          custom_title: sanitizeText(title.innerText)
         });
       }
     });
   });
 
+  // Scroll top
   document.querySelector(".scrolltop")?.addEventListener("click", function() {
-    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'clique',
       custom_section: 'geral',
@@ -441,17 +434,18 @@ document.addEventListener("DOMContentLoaded", function () {
       custom_title: 'scroll-to-top'
     });
   });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-    const inputOferta = document.querySelector(".send__input");
-    inputOferta?.addEventListener("blur", function () {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'interacao',
-        custom_section: 'home',
-        custom_type: 'campo',
-        custom_title: 'buscar-pesquisar'
-      });
+  // Campo de busca
+  document.querySelector(".send__input")?.addEventListener("blur", function() {
+    window.dataLayer.push({
+      event: 'interacao',
+      custom_section: 'home',
+      custom_type: 'campo',
+      custom_title: 'buscar-pesquisar',
+      search_term: this.value
     });
+  });
+
+  window.dataLayer = window.dataLayer || [];
+});
 </script>
