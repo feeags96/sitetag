@@ -291,6 +291,11 @@ function sanitizeText(text) {
     .replace(/\s+/g, "-");
 }
 
+function sanitizePrice(price) {
+  // Remove tudo exceto números, pontos e vírgulas
+  return price.replace(/[^\d.,]/g, '');
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   // Botão de tema dark/light
   document.getElementById("theme-button")?.addEventListener("click", function () {
@@ -352,38 +357,29 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Redes Sociais
-document.querySelector(".footer__content:last-child a[href='#']:first-child")?.addEventListener("click", function(e) {
-  e.preventDefault();
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'clique',
-    custom_section: 'footer',
-    custom_type: 'rede-social',
-    custom_title: 'facebook'
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Redes Sociais corrigidas
+  document.querySelectorAll(".footer__social").forEach((social) => {
+    social.addEventListener("click", function(e) {
+      e.preventDefault();
+      let socialNetwork = '';
+      
+      if (this.querySelector('.bxl-facebook-circle')) socialNetwork = 'facebook';
+      else if (this.querySelector('.bxl-twitter')) socialNetwork = 'twitter';
+      else if (this.querySelector('.bxl-instagram-alt')) socialNetwork = 'instagram';
+      
+      if (socialNetwork) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'clique',
+          custom_section: 'home',
+          custom_type:'link',
+          custom_title: socialNetwork
+        });
+      }
+    });
   });
-});
-
-document.querySelector(".footer__content:last-child a[href='#']:nth-child(2)")?.addEventListener("click", function(e) {
-  e.preventDefault();
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'clique',
-    custom_section: 'footer',
-    custom_type: 'rede-social',
-    custom_title: 'twitter'
-  });
-});
-
-document.querySelector(".footer__content:last-child a[href='#']:last-child")?.addEventListener("click", function(e) {
-  e.preventDefault();
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'clique',
-    custom_section: 'footer',
-    custom_type: 'rede-social',
-    custom_title: 'instagram'
-  });
-});
 
   // Links de navegação no header
   document.querySelectorAll(".nav__link").forEach(function(link) {
@@ -424,7 +420,7 @@ document.querySelector(".footer__content:last-child a[href='#']:last-child")?.ad
         window.dataLayer.push({
           event: 'purchase',
           item_category: sanitizeText(category),
-          price: sanitizeText(price),
+          price: sanitizePrice(price),
           item_name: sanitizeText(item_name)
         });
       }
