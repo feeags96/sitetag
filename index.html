@@ -442,4 +442,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+const inputOferta = document.querySelector(".send__input");
+
+  inputOferta?.addEventListener("blur", function () {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'interacao',
+      custom_section: 'home',
+      custom_type: 'campo',
+      custom_title: 'buscar-pesquisar'
+    });
+  });
 </script>
