@@ -361,8 +361,8 @@ document.addEventListener("DOMContentLoaded", function () {
         window.dataLayer.push({
           event: 'clique',
           custom_section: 'footer',
-          custom_type: 'rede-social',
-          custom_title: sanitizeText(socialNetwork)
+          custom_type: 'link',
+          custom_title: socialNetwork
         });
       }
     });
@@ -442,7 +442,7 @@ document.addEventListener("DOMContentLoaded", function () {
       custom_section: 'home',
       custom_type: 'campo',
       custom_title: 'buscar-pesquisar',
-      search_term: this.value
+      search_term: sanitizeText(this.value)
     });
   });
 
