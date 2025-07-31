@@ -292,12 +292,10 @@ function sanitizeText(text) {
 }
 
 function sanitizePrice(price) {
-  // Remove tudo exceto números, pontos e vírgulas
   return price.replace(/[^\d.,]/g, '');
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Botão de tema dark/light
   document.getElementById("theme-button")?.addEventListener("click", function () {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -308,7 +306,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Botão "Descubra as Soluções"
   document.getElementById("btnSolucoes")?.addEventListener("click", function () {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -319,7 +316,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Botão "Buscar"
   document.getElementById("btnBuscar")?.addEventListener("click", function () {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -330,7 +326,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Links do footer - Preços, Descontos, Produtos
   document.querySelectorAll(".footer__content:nth-child(2) .footer__link").forEach(function(link) {
     link.addEventListener("click", function() {
       window.dataLayer = window.dataLayer || [];
@@ -343,7 +338,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Links do footer - Blog, Nossa Missão, Nossa Visão
   document.querySelectorAll(".footer__content:nth-child(3) .footer__link").forEach(function(link) {
     link.addEventListener("click", function() {
       window.dataLayer = window.dataLayer || [];
@@ -357,9 +351,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Redes Sociais
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Redes Sociais corrigidas
   document.querySelectorAll(".footer__social").forEach((social) => {
     social.addEventListener("click", function(e) {
       e.preventDefault();
@@ -381,7 +372,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // Links de navegação no header
   document.querySelectorAll(".nav__link").forEach(function(link) {
     link.addEventListener("click", function() {
       if(this.getAttribute('href') !== '#') {
@@ -396,7 +386,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // Botões "Explore Agora" 
   document.querySelector(".share__data .button")?.addEventListener("click", function() {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -407,7 +396,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // Botões de coração nos produtos
   var accessoryButtons = document.querySelectorAll(".accessory__button");
   accessoryButtons.forEach(function(button) {
     button.addEventListener("click", function() {
@@ -427,7 +415,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // Botões "Explore Agora"
   var exploreButtons = document.querySelectorAll(".button.button-link");
   exploreButtons.forEach(function(button) {
     button.addEventListener("click", function() {
@@ -445,7 +432,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // Scroll para o topo
   document.querySelector(".scrolltop")?.addEventListener("click", function() {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
